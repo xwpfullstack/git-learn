@@ -80,15 +80,8 @@ $ git add [dir]
 # 添加当前目录的所有文件到暂存区
 $ git add .
 
-# 添加每个变化前，都会要求确认
-# 对于同一个文件的多处变化，可以实现分次提交
-$ git add -p
-
 # 删除工作区文件，并且将这次删除放入暂存区
 $ git rm [file1] [file2] ...
-
-# 停止追踪指定文件，但该文件会保留在工作区
-$ git rm --cached [file]
 
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
@@ -105,9 +98,6 @@ $ git commit [file1] [file2] ... -m [message]
 
 # 提交工作区自上次commit之后的变化，直接到仓库区
 $ git commit -a
-
-# 提交时显示所有diff信息
-$ git commit -v
 
 # 使用一次新的commit，替代上一次提交
 # 如果代码没有任何新变化，则用来改写上一次commit的提交信息
@@ -139,6 +129,9 @@ $ git checkout -b [branch]
 # 新建一个分支，指向指定commit
 $ git branch [branch] [commit]
 
+# 新建一个远程分支，本地新建然后推送
+$ git push origin [branch] 
+
 # 新建一个分支，与指定的远程分支建立追踪关系
 $ git branch --track [branch] [remote-branch]
 
@@ -148,8 +141,8 @@ $ git checkout [branch-name]
 # 切换到上一个分支
 $ git checkout -
 
-# 建立追踪关系，在现有分支与指定的远程分支之间
-$ git branch --set-upstream [branch] [remote-branch]
+# 建立追踪关系，设置当前分支与指定的远程分支之间关联
+$ git branch --set-upstream-to [remote-branch]
 
 # 合并指定分支到当前分支
 $ git merge [branch]
@@ -245,8 +238,6 @@ $ git diff HEAD
 # 显示两次提交之间的差异
 $ git diff [first-branch]...[second-branch]
 
-# 显示今天你写了多少行代码
-$ git diff --shortstat "@{0 day ago}"
 
 # 显示某次提交的元数据和内容变化
 $ git show [commit]
